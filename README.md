@@ -36,7 +36,7 @@ function SEO() {
     tenant: "tenant",
     deck: "deck",
     template: "template",
-    variables {
+    variables: {
       title: "Hello world!",
     },
   });
