@@ -6,7 +6,7 @@ To create a Flayyer template please refer to: [flayyer.com](https://flayyer.com?
 
 ## Installation
 
-React Hook to memoize a [Flayyer](https://github.com/flayyer/flayyer-js) instance to prevent unnecessary renderings.
+Super lightweight React Hook to memoize a [Flayyer](https://github.com/flayyer/flayyer-js) instance to prevent unnecessary renderings.
 
 ```sh
 yarn add @flayyer/flayyer-hook @flayyer/flayyer qs
