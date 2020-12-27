@@ -301,10 +301,13 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@flayyer/flayyer@^1.1.1":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@flayyer/flayyer/-/flayyer-1.1.1.tgz#346b29c267962cce87f7c1a55408863428a1ecba"
-  integrity sha512-FpCp0NIdXBTGaRFrba1p30/cngstYhq+hWPxeCl95el1NIlqotUwhAt2ufsk76RPt5ldIT9M3ATudUB/Bf0Ybg==
+"@flayyer/flayyer@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@flayyer/flayyer/-/flayyer-1.2.0.tgz#6f085d7081ebfe133bd90b60c9ffc8cc6515219d"
+  integrity sha512-IeIEta30GIeyCPY/u6n21EcMRbrgWmEeL9nLC+x8lWQCKbGvpqH4PBhFgGuLz5wT2zq/tpu6Xq/wGTyiLJKy7g==
+  dependencies:
+    "@types/qs" "^6.9.5"
+    qs "^6.9.4"
 
 "@istanbuljs/load-nyc-config@^1.0.0":
   version "1.1.0"
@@ -627,10 +630,15 @@
   resolved "https://registry.yarnpkg.com/@types/json-schema/-/json-schema-7.0.6.tgz#f4c7ec43e81b319a9815115031709f26987891f0"
   integrity sha512-3c+yGKvVP5Y9TYBEibGNR+kLtijnj7mYrXRg+WpFb2X9xm04g/DXYkfg4hmzJQosc9snFNUPkbYIhu+KAm6jJw==
 
-"@types/node@*", "@types/node@^14.14.14":
+"@types/node@*":
   version "14.14.14"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-14.14.14.tgz#f7fd5f3cc8521301119f63910f0fb965c7d761ae"
   integrity sha512-UHnOPWVWV1z+VV8k6L1HhG7UbGBgIdghqF3l9Ny9ApPghbjICXkUJSd/b9gOgQfjM1r+37cipdw/HJ3F6ICEnQ==
+
+"@types/node@^14.14.16":
+  version "14.14.16"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.14.16.tgz#3cc351f8d48101deadfed4c9e4f116048d437b4b"
+  integrity sha512-naXYePhweTi+BMv11TgioE2/FXU4fSl29HAH1ffxVciNsH3rYXjNP2yM8wqmSm7jS20gM8TIklKiTen+1iVncw==
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.0"
