@@ -16,7 +16,8 @@ export default {
     { file: pkg.module, format: "es", sourcemap: true },
   ],
   // Indicate here external modules you don't wanna include in your bundle (i.e.: 'lodash')
-  external: ["qs", "react", "react-dom", "@flayyer/flayyer"],
+  // Not sure about tslib. See: https://mariusschulz.com/blog/external-helpers-library-in-typescript
+  external: ["qs", "react", "react-dom", "@flayyer/flayyer", "tslib"],
   watch: {
     include: "src/**",
   },
