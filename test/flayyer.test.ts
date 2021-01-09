@@ -1,5 +1,8 @@
-import { useFlayyer } from "../src/flayyer-hook";
+/* eslint-disable react-hooks/rules-of-hooks */
+
 import { renderHook } from "@testing-library/react-hooks";
+
+import { useFlayyer } from "../src/flayyer-hook";
 
 describe("useFlayyer", () => {
   function useHook(...args: Parameters<typeof useFlayyer>) {
