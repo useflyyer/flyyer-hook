@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 
-import Flayyer, { FlayyerParams, FlayyerVariables } from "@flayyer/flayyer";
+import { Flayyer, FlayyerParams, FlayyerVariables } from "@flayyer/flayyer";
 
 const DEFAULT_STATE = () => (new Date().getTime() / 1000).toFixed(0);
 
@@ -28,10 +28,7 @@ export function useFlayyer<T extends FlayyerVariables = FlayyerVariables>(args: 
 
   return useMemo(() => {
     if (args.tenant && args.deck && args.template) {
-      const flayyer = new Flayyer({
-        ...(args as any),
-        meta: { v: defaultV, ...args.meta },
-      });
+      const flayyer = new Flayyer(Object.assign({}, args, { meta: Object.assign({}, meta, { v: defaultV }) }) as any);
       return flayyer;
     }
     return null;
