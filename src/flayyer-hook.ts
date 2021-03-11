@@ -1,16 +1,13 @@
 import { useMemo, useState } from "react";
 
-import { Flayyer, FlayyerParams, FlayyerVariables } from "@flayyer/flayyer";
-
-const DEFAULT_STATE = () => (new Date().getTime() / 1000).toFixed(0);
+import { FlayyerIO, FlayyerIOParams, FlayyerAI, FlayyerAIParams, __V, FlayyerVariables } from "@flayyer/flayyer";
 
 /**
  * Will return the same instance if the parameters are the same. This is useful for performance and prevents unnecessary renders.
  */
-export function useFlayyer<T extends FlayyerVariables = FlayyerVariables>(args: Partial<FlayyerParams<T>>) {
-  const [defaultV] = useState(DEFAULT_STATE);
-
+export function useFlayyerIO<T extends FlayyerVariables = FlayyerVariables>(args: Partial<FlayyerIOParams<T>>) {
   const meta = args.meta || {};
+  const [v] = useState(() => __V(meta.v));
   const deps = [
     args.tenant,
     args.deck,
@@ -23,14 +20,48 @@ export function useFlayyer<T extends FlayyerVariables = FlayyerVariables>(args: 
     meta.height,
     meta.resolution,
     meta.id,
-    meta.v,
+    v,
   ];
 
   return useMemo(() => {
     if (args.tenant && args.deck && args.template) {
-      const flayyer = new Flayyer(Object.assign({}, args, { meta: Object.assign({}, meta, { v: defaultV }) }) as any);
+      const params = Object.assign({}, args, { meta: Object.assign({}, meta, { v }) }) as any;
+      const flayyer = new FlayyerIO(params);
       return flayyer;
     }
     return null;
   }, deps);
 }
+
+/**
+ * Will return the same instance if the parameters are the same. This is useful for performance and prevents unnecessary renders.
+ */
+export function useFlayyerAI<T extends FlayyerVariables = FlayyerVariables>(args: Partial<FlayyerAIParams<T>>) {
+  const meta = args.meta || {};
+  const [v] = useState(() => __V(meta.v));
+  const deps = [
+    args.project,
+    args.extension,
+    args.variables ? JSON.stringify(args.variables) : "",
+    meta.agent,
+    meta.width,
+    meta.height,
+    meta.resolution,
+    meta.id,
+    v,
+  ];
+
+  return useMemo(() => {
+    if (args.project) {
+      const params = Object.assign({}, args, { meta: Object.assign({}, meta, { v }) }) as any;
+      const flayyer = new FlayyerAI(params);
+      return flayyer;
+    }
+    return null;
+  }, deps);
+}
+
+/**
+ * @deprecated Import `useFlayyerIO` or `useFlayyerAI` instead of `useFlayyer`.
+ */
+export const useFlayyer = useFlayyerIO;
