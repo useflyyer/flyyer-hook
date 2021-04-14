@@ -34,6 +34,11 @@ The main difference between `Flayyer.io` and `Flayyer.ai` is:
 * **Flayyer.io requires you to explicitly declare template and variables for the images to render**.
 * **Flayyer.ai uses the [rules defined on your dashboard](https://flayyer.com/dashboard/_/projects) to decide how to handle every image**, then fetches and analyse the website for variables and information to render the image.
 
+In simple words:
+
+* Flayyer.io like saying _"render an image with using this template and these explicit variables."_
+* Flayyer.ai like saying _"render images based on the content of this route."_
+
 ### Flayyer.ai
 
 This is the easiest way to use Flayyer. The following snippet enables our platform to analyse the content of every page to extract relevant information and use it to generate image previews.
@@ -42,8 +47,8 @@ This is the easiest way to use Flayyer. The following snippet enables our platfo
 import React from "react";
 import { useFlayyerAI } from "@flayyer/flayyer-hook";
 
-function SEO() {
-  const flayyer = useFlayyerAI({
+function Head() {
+  const flayyer = new useFlayyerAI({
     project: "my-project",
     path: `/products/1`,
   });
@@ -53,6 +58,7 @@ function SEO() {
   return (
     <head>
       <meta property="og:image" content={url} />
+      <meta name="twitter:image" content={url} />
       {/* Declare the original image so you can use it on your templates */}
       <meta property="flayyer:image" content="https://yoursite.com/image/products/1.png" />
     </head>
@@ -64,11 +70,11 @@ Remember to dynamically get the current path for each page. If you are using [Ne
 
 ```js
 import { useRouter } from 'next/router'
-import { FlayyerAI } from "@flayyer/flayyer";
+import { useFlayyerAI } from "@flayyer/flayyer-hook";
 
 function SEO() {
   const router = useRouter();
-  const flayyer = new FlayyerAI({
+  const flayyer = useFlayyerAI({
     project: "my-project",
     path: router.asPath,
   });
@@ -85,7 +91,7 @@ After installing this module you can format URLs.
 import React from "react";
 import { useFlayyerIO } from "@flayyer/flayyer-hook";
 
-function SEO() {
+function Head() {
   const flayyer = useFlayyerIO({
     tenant: "tenant",
     deck: "deck",
@@ -101,8 +107,9 @@ function SEO() {
   return (
     <head>
       <meta property="og:image" content={url} />
+      <meta name="twitter:image" content={url} />
     </head>
-  )
+  );
 }
 ```
 

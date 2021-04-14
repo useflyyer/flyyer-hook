@@ -52,5 +52,18 @@ describe("useFlayyerAI", () => {
     expect(href).toMatch(/^https:\/\/flayyer.ai\/v2\/project\/_\/__v=(\d+)\/products\/1/);
   });
 
+  it("preserves __v params on next renders to prevent messing with browser cache", () => {
+    const { result, rerender } = renderHook(({ initialValue }) => useFlayyerAI(initialValue), {
+      initialProps: { initialValue: { project: "PROJECT" } },
+    });
+    const href = result.current!.href();
+
+    rerender({ initialValue: { project: "PROJECT" } });
+    expect(result.current!.href()).toBe(href);
+
+    rerender({ initialValue: { project: "PROJECT-2" } });
+    expect(result.current!.href()).toBe(href.replace("PROJECT", "PROJECT-2"));
+  });
+
   // TODO: test memoize
 });
