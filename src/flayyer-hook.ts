@@ -1,13 +1,12 @@
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 
-import { FlayyerIO, FlayyerIOParams, FlayyerAI, FlayyerAIParams, __V, FlayyerVariables } from "@flayyer/flayyer";
+import { FlayyerIO, FlayyerIOParams, FlayyerAI, FlayyerAIParams, FlayyerVariables } from "@flayyer/flayyer";
 
 /**
  * Will return the same instance if the parameters are the same. This is useful for performance and prevents unnecessary renders.
  */
 export function useFlayyerIO<T extends FlayyerVariables = FlayyerVariables>(args: Partial<FlayyerIOParams<T>>) {
   const meta = args.meta || {};
-  const [v] = useState(() => __V(meta.v));
   const deps = [
     args.tenant,
     args.deck,
@@ -19,14 +18,14 @@ export function useFlayyerIO<T extends FlayyerVariables = FlayyerVariables>(args
     meta.width,
     meta.height,
     meta.resolution,
+    meta.locale,
     meta.id,
-    v,
+    // Do not include meta.v
   ];
 
   return useMemo(() => {
     if (args.tenant && args.deck && args.template) {
-      const params = Object.assign({}, args, { meta: Object.assign({}, meta, { v }) }) as any;
-      const flayyer = new FlayyerIO(params);
+      const flayyer = new FlayyerIO(args as any);
       return flayyer;
     }
     return null;
@@ -38,23 +37,24 @@ export function useFlayyerIO<T extends FlayyerVariables = FlayyerVariables>(args
  */
 export function useFlayyerAI<T extends FlayyerVariables = FlayyerVariables>(args: Partial<FlayyerAIParams<T>>) {
   const meta = args.meta || {};
-  const [v] = useState(() => __V(meta.v));
   const deps = [
     args.project,
+    args.path,
+    args.version,
     args.extension,
     args.variables ? JSON.stringify(args.variables) : "",
     meta.agent,
     meta.width,
     meta.height,
     meta.resolution,
+    meta.locale,
     meta.id,
-    v,
+    // Do not include meta.v
   ];
 
   return useMemo(() => {
     if (args.project) {
-      const params = Object.assign({}, args, { meta: Object.assign({}, meta, { v }) }) as any;
-      const flayyer = new FlayyerAI(params);
+      const flayyer = new FlayyerAI(args as any);
       return flayyer;
     }
     return null;
