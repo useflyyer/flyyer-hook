@@ -1,6 +1,6 @@
 {
   "name": "@flayyer/flayyer-hook",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "description": "Flayyer.com React Hook to memoize a flayyer instance",
   "keywords": [
     "flayyer",
