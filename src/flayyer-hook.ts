@@ -20,7 +20,7 @@ export function useFlayyerIO<T extends FlayyerVariables = FlayyerVariables>(args
     meta.resolution,
     meta.locale,
     meta.id,
-    // Do not include meta.v
+    meta.v,
   ];
 
   return useMemo(() => {
@@ -49,7 +49,7 @@ export function useFlayyerAI<T extends FlayyerVariables = FlayyerVariables>(args
     meta.resolution,
     meta.locale,
     meta.id,
-    // Do not include meta.v
+    meta.v,
   ];
 
   return useMemo(() => {
