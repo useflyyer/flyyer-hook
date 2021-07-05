@@ -60,8 +60,3 @@ export function useFlayyerAI<T extends FlayyerVariables = FlayyerVariables>(args
     return null;
   }, deps);
 }
-
-/**
- * @deprecated Import `useFlayyerIO` or `useFlayyerAI` instead of `useFlayyer`.
- */
-export const useFlayyer = useFlayyerIO;
