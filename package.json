@@ -1,6 +1,6 @@
 {
   "name": "@flyyer/flyyer-hook",
-  "version": "2.4.0",
+  "version": "3.0.0",
   "description": "Flyyer.io React Hook to memoize a flyyer instance",
   "keywords": [
     "flyyer",
