@@ -340,10 +340,10 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@flayyer/eslint-config@^1.1.3":
-  version "1.1.3"
-  resolved "https://registry.yarnpkg.com/@flayyer/eslint-config/-/eslint-config-1.1.3.tgz#0456c0a000e103f6a0a0d9516ea40766f7aceb92"
-  integrity sha512-p9B3CrcjFi/Aqvp5PMS1dklV9Zv731feC4Ut4bZ52jvVJ+UTCXeHGdm7LkChxIoBAIuCYsPcE9cmlJ/T/J9ocg==
+"@flyyer/eslint-config@^2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@flyyer/eslint-config/-/eslint-config-2.0.1.tgz#34c01d2448933cf0cf83588e3707d82c22e62f69"
+  integrity sha512-ksY+p3J/OzMrbe7R456zDce2bAfhk/BQ/rnl7kmReMZMi212dLhgpEJiUj6pSfaIb1Tu3IChft9+SzuM+rcCTg==
   dependencies:
     "@babel/core" "^7.14.3"
     "@babel/eslint-parser" "^7.14.4"
@@ -358,10 +358,10 @@
     eslint-plugin-vue "^7.10.0"
     vue-eslint-parser "^7.6.0"
 
-"@flayyer/flayyer@^2.3.3":
-  version "2.3.3"
-  resolved "https://registry.yarnpkg.com/@flayyer/flayyer/-/flayyer-2.3.3.tgz#31dc1b57b49d864e5ac4177e2ed3481da386d180"
-  integrity sha512-m0MgPbFoqx+EfYINI7++j0lIMYXNEjFXigxQ9+jQjNGm8J1QsjafWX3tqqXxasDOfJjzGY2bTO94KZRSV+/WRQ==
+"@flyyer/flyyer@^3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@flyyer/flyyer/-/flyyer-3.0.1.tgz#9777da368b473c302479112b85fd287b64b6dbe6"
+  integrity sha512-qfJU4W7zBSEYDEdHX6b5u3BuA/tUHj3iIZ4mSWQN+r1uOG6lKIgVXk/oLNtZgcUM9wP+rzCISLAz8Awbpq8uVw==
   dependencies:
     "@types/qs" "^6.9.6"
     qs "^6.10.1"

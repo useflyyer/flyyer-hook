@@ -1,21 +1,21 @@
-# useFlayyer (flayyer-hook)
+# useFlyyer (flyyer-hook)
 
-![npm-version](https://badgen.net/npm/v/@flayyer/flayyer-hook)
-![downloads](https://badgen.net/npm/dt/@flayyer/flayyer-hook)
-![size](https://badgen.net/bundlephobia/minzip/@flayyer/flayyer-hook)
-![tree-shake](https://badgen.net/bundlephobia/tree-shaking/@flayyer/flayyer-hook)
+![npm-version](https://badgen.net/npm/v/@flyyer/flyyer-hook)
+![downloads](https://badgen.net/npm/dt/@flyyer/flyyer-hook)
+![size](https://badgen.net/bundlephobia/minzip/@flyyer/flyyer-hook)
+![tree-shake](https://badgen.net/bundlephobia/tree-shaking/@flyyer/flyyer-hook)
 
-To create a Flayyer template and account please refer to: [flayyer.com](https://flayyer.com?ref=flayyer-hook)
+To create a Flyyer template and account please refer to: [Flyyer.io](https://flyyer.io?ref=flyyer-hook)
 
 ## Installation
 
-Super lightweight React Hook to memoize a [Flayyer](https://github.com/flayyer/flayyer-js) instance to prevent unnecessary renderings.
+Super lightweight React Hook to memoize a [Flyyer](https://github.com/useflyyer/flyyer-js) instance to prevent unnecessary renderings.
 
 ```sh
-yarn add @flayyer/flayyer-hook @flayyer/flayyer
+yarn add @flyyer/flyyer-hook @flyyer/flyyer
 
 # or with npm:
-npm install --save @flayyer/flayyer-hook @flayyer/flayyer
+npm install --save @flyyer/flyyer-hook @flyyer/flyyer
 ```
 
 Types for [TypeScript](https://www.typescriptlang.org) are included, but if you have any issues try installing `qs` types:
@@ -29,38 +29,34 @@ npm install --save-dev @types/qs
 
 ## Usage
 
-The main difference between `Flayyer.io` and `Flayyer.ai` is:
+The difference between Flyyer and FlyyerRender:
 
-* **Flayyer.io requires you to explicitly declare template and variables for the images to render**.
-* **Flayyer.ai uses the [rules defined on your dashboard](https://flayyer.com/dashboard/_/projects) to decide how to handle every image**, then fetches and analyse the website for variables and information to render the image.
+* Flyyer uses the [rules defined on your dashboard](https://flyyer.io/dashboard/_/projects) to decide how to handle every image. It analyses your website to render a content-rich image. Let's say _"Flyyer renders images based on the content of this route"_.
 
-In simple words:
+* FlyyerRender instead requires you to explicitly declare template and variables for the images to render, **giving you more control for customization**. Let's say _"FlyyerRender renders an image using this template and these explicit variables"_.
 
-* Flayyer.io like saying _"render an image with using this template and these explicit variables."_
-* Flayyer.ai like saying _"render images based on the content of this route."_
+### Flyyer
 
-### Flayyer.ai
-
-This is the easiest way to use Flayyer. The following snippet enables our platform to analyse the content of every page to extract relevant information and use it to generate image previews.
+The following snippet enables our platform to analyse the content of every page to extract relevant information and use it to generate image previews.
 
 ```js
 import React from "react";
-import { useFlayyerAI } from "@flayyer/flayyer-hook";
+import { useFlyyer } from "@flyyer/flyyer-hook";
 
 function Head() {
-  const flayyer = new useFlayyerAI({
+  const flyyer = new useFlyyer({
     project: "my-project",
     path: `/products/1`,
   });
-  const url = flayyer.href();
-  // > https://flayyer.ai/v2/my-project/_/__v=1596906866/products/1
+  const url = flyyer.href();
+  // > https://cdn.flyyer.io/v2/my-project/_/__v=1596906866/products/1
 
   return (
     <head>
       <meta property="og:image" content={url} />
       <meta name="twitter:image" content={url} />
       {/* Declare the original image so you can use it on your templates */}
-      <meta property="flayyer:image" content="https://yoursite.com/image/products/1.png" />
+      <meta property="flyyer:image" content="https://yoursite.com/image/products/1.png" />
     </head>
   );
 }
@@ -70,11 +66,11 @@ Remember to dynamically get the current path for each page. If you are using [Ne
 
 ```js
 import { useRouter } from 'next/router'
-import { useFlayyerAI } from "@flayyer/flayyer-hook";
+import { useFlyyer } from "@flyyer/flyyer-hook";
 
 function SEO() {
   const router = useRouter();
-  const flayyer = useFlayyerAI({
+  const flyyer = useFlyyer({
     project: "my-project",
     path: router.asPath,
   });
@@ -83,16 +79,16 @@ function SEO() {
 }
 ```
 
-### Flayyer.io
+### FlyyerRender
 
 After installing this module you can format URLs.
 
 ```js
 import React from "react";
-import { useFlayyerIO } from "@flayyer/flayyer-hook";
+import { useFlyyerRender } from "@flyyer/flyyer-hook";
 
 function Head() {
-  const flayyer = useFlayyerIO({
+  const flyyer = useFlyyerRender({
     tenant: "tenant",
     deck: "deck",
     template: "template",
@@ -101,8 +97,8 @@ function Head() {
       image: "https://yoursite.com/image/products/1.png",
     },
   });
-  const url = flayyer.href();
-  // > https://flayyer.io/v2/tenant/deck/template.jpeg?__v=1596906866&title=Hello+world%21&image=...
+  const url = flyyer.href();
+  // > https://cdn.flyyer.io/render/v2/tenant/deck/template.jpeg?__v=1596906866&title=Hello+world%21&image=...
 
   return (
     <head>
@@ -129,7 +125,7 @@ yarn test
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/flayyer/flayyer-hook.
+Bug reports and pull requests are welcome on GitHub at https://github.com/useflyyer/flyyer-hook.
 
 ## License
 

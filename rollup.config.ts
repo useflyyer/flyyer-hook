@@ -7,7 +7,7 @@ import typescript from "rollup-plugin-typescript2";
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const pkg = require("./package.json");
 
-const libraryName = "flayyer-hook";
+const libraryName = "flyyer-hook";
 
 export default {
   input: `src/${libraryName}.ts`,
@@ -17,7 +17,7 @@ export default {
   ],
   // Indicate here external modules you don't wanna include in your bundle (i.e.: 'lodash')
   // Not sure about tslib. See: https://mariusschulz.com/blog/external-helpers-library-in-typescript
-  external: ["qs", "react", "react-dom", "@flayyer/flayyer", "tslib"],
+  external: ["qs", "react", "react-dom", "@flyyer/flyyer", "tslib"],
   watch: {
     include: "src/**",
   },
