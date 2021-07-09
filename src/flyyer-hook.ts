@@ -1,11 +1,11 @@
 import { useMemo } from "react";
 
-import { FlayyerIO, FlayyerIOParams, FlayyerAI, FlayyerAIParams, FlayyerVariables } from "@flayyer/flayyer";
+import { FlyyerRender, FlyyerRenderParams, Flyyer, FlyyerParams, FlyyerVariables } from "@flyyer/flyyer";
 
 /**
  * Will return the same instance if the parameters are the same. This is useful for performance and prevents unnecessary renders.
  */
-export function useFlayyerIO<T extends FlayyerVariables = FlayyerVariables>(args: Partial<FlayyerIOParams<T>>) {
+export function useFlyyerRender<T extends FlyyerVariables = FlyyerVariables>(args: Partial<FlyyerRenderParams<T>>) {
   const meta = args.meta || {};
   const deps = [
     args.tenant,
@@ -25,8 +25,8 @@ export function useFlayyerIO<T extends FlayyerVariables = FlayyerVariables>(args
 
   return useMemo(() => {
     if (args.tenant && args.deck && args.template) {
-      const flayyer = new FlayyerIO(args as any);
-      return flayyer;
+      const flyyer = new FlyyerRender(args as any);
+      return flyyer;
     }
     return null;
   }, deps);
@@ -35,7 +35,7 @@ export function useFlayyerIO<T extends FlayyerVariables = FlayyerVariables>(args
 /**
  * Will return the same instance if the parameters are the same. This is useful for performance and prevents unnecessary renders.
  */
-export function useFlayyerAI<T extends FlayyerVariables = FlayyerVariables>(args: Partial<FlayyerAIParams<T>>) {
+export function useFlyyer<T extends FlyyerVariables = FlyyerVariables>(args: Partial<FlyyerParams<T>>) {
   const meta = args.meta || {};
   const deps = [
     args.project,
@@ -54,8 +54,8 @@ export function useFlayyerAI<T extends FlayyerVariables = FlayyerVariables>(args
 
   return useMemo(() => {
     if (args.project) {
-      const flayyer = new FlayyerAI(args as any);
-      return flayyer;
+      const flyyer = new Flyyer(args as any);
+      return flyyer;
     }
     return null;
   }, deps);
