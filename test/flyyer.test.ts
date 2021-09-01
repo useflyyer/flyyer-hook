@@ -26,7 +26,7 @@ describe("useFlyyerRender", () => {
   it("returns flyyer instance", () => {
     const { result } = useHookFlyyerRender({ tenant: "tenant", deck: "deck", template: "template" });
     const href = result.current!.href();
-    expect(href.startsWith("https://cdn.flyyer.io/render/v2/tenant/deck/template.jpeg?__v=")).toBeTruthy();
+    expect(href.startsWith("https://cdn.flyyer.io/r/v2/tenant/deck/template.jpeg?__v=")).toBeTruthy();
   });
 
   // TODO: test memoize
